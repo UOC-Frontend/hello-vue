@@ -11,9 +11,23 @@
   <div class="for">
     <h1>V-For Example</h1>
     <ul>
-      <li v-for="turtle in tourtlesObj" :key="turtle.id">
+      <li v-for="turtle in tourtlesObj" :key="turtle.id"
+        @click="$router.push( { name: 'single', params: {turtleID: turtle.id} })"
+      >
        {{ turtle.id }} : {{ turtle.name }} uses {{ turtle.weapon }}
       </li>
     </ul>
   </div>
 </template>
+
+<style>
+  .new{
+    display: grid;
+  }
+  li{
+    cursor: pointer;
+  }
+  li:hover{
+    color: hsla(160, 100%, 37%, 1);
+  }
+</style>
