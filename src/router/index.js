@@ -23,13 +23,22 @@ const router = createRouter({
       path: '/for',
       name: 'for',
       component: () => import('../views/ForView.vue')
-    }
-    ,
+    },
     {
       path: '/single/:turtleID',
       name: 'single',
       props: true,
       component: () => import('../views/SingleView.vue')
+    },
+    {
+      path: '/composition',
+      name: 'composition',
+      component: () => import('../views/DemoCompositionView.vue')
+    },
+    {
+      path: '/options',
+      name: 'options',
+      component: () => import('../views/DemoOptions.vue')
     }
   ]
 })
