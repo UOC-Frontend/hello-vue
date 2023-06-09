@@ -25,6 +25,11 @@ const router = createRouter({
       component: () => import('../views/ForView.vue')
     },
     {
+      path: '/component',
+      name: 'component',
+      component: () => import('../views/ComponentView.vue')
+    },
+    {
       path: '/single/:turtleID',
       name: 'single',
       props: true,
