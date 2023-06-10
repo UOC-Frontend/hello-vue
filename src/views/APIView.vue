@@ -1,10 +1,11 @@
 <script setup>
 
-  import { ref, onMounted } from 'vue';
+  import { ref, onMounted, computed } from 'vue';
   import PhotoCard from '../components/PhotoCard.vue';
   import api from '../services/services';
   
   const photos = ref([]);
+  const search = ref('');
 
   onMounted( () => {
     api.getPhotos().then( response => {
@@ -13,6 +14,13 @@
   });
   });
 
+  const filteredPhotos = computed( () => {
+    return photos.value.filter( (photo) => {
+      return photo.title.toLowerCase().includes(search.value.toLowerCase())
+    })
+  }
+  )
+
  
 
 </script>
@@ -20,8 +28,12 @@
 <template>
   <div class="for">
     <h1>API Example</h1>
+
+    <input v-model="search" type="text" placeholder="type to search ...">
+    <br>
+    {{ search }}
     <section class="cards">
-      <PhotoCard v-for="photo in photos" :key="photo.id" :info="photo"/>
+      <PhotoCard v-for="photo in filteredPhotos" :key="photo.id" :info="photo"/>
     </section>
   </div>
 </template>
