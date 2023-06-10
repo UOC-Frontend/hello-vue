@@ -11,7 +11,7 @@
     console.log(response.data);
     photos.value = response.data;
   });
-  })
+  });
 
  
 
