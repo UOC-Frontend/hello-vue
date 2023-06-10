@@ -1,6 +1,23 @@
 <script setup>
-  const props = defineProps(['info'])
-  console.log(props.info)
+import {ref} from 'vue';
+
+  const props = defineProps(['info']);
+  const emit = defineEmits(['response']);
+  const count = ref(0);
+  
+  console.log(props.info);
+
+  // ES6
+  const increment = () => {
+    count.value++;
+    emit('response', props.info.name, props.info.weapon);
+  }
+
+  // ES5
+  // function increment(){
+    count.value++;
+  // }
+
 </script>
 
 <template>
@@ -11,6 +28,7 @@
     <button @click="$router.push( { name: 'single', params: {turtleID: props.info.id} })">
         View more ...
     </button>
+    <button @click="increment">Counter {{ count }}</button>
   </article>
 </template>
 
