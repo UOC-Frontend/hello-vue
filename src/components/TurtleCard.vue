@@ -5,7 +5,7 @@ import {ref} from 'vue';
   const emit = defineEmits(['response']);
   const count = ref(0);
   
-  console.log(props.info);
+  // console.log(props.info);
 
   // ES6
   const increment = () => {

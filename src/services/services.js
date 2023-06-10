@@ -12,6 +12,6 @@ const api = axios.create({
 
 export default {
   getPhotos() {
-    return api.get('/photos')
+    return api.get('/photos?_limit=10')
   }
 }

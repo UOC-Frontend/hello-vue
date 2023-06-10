@@ -18,6 +18,7 @@ import HelloWorld from './components/HelloWorld.vue'
         <RouterLink to="/component">Component View ex For</RouterLink>
         <RouterLink to="/composition">Composition</RouterLink>
         <RouterLink to="/options">Options</RouterLink>
+        <RouterLink to="/api">API</RouterLink>
       </nav>
     </div>
   </header>
