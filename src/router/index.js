@@ -36,6 +36,12 @@ const router = createRouter({
       component: () => import('../views/SingleView.vue')
     },
     {
+      path: '/photo/:photoID',
+      name: 'photo',
+      props: true,
+      component: () => import('../views/PhotoView.vue')
+    },
+    {
       path: '/composition',
       name: 'composition',
       component: () => import('../views/DemoCompositionView.vue')

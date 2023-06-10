@@ -1,54 +1,45 @@
 <script setup>
 
-  import {ref} from 'vue';
-  import TurtleCard from '../components/TurtleCard.vue';
+  import { ref, onMounted } from 'vue';
+  import PhotoCard from '../components/PhotoCard.vue';
   import api from '../services/services';
-
-  const tourtlesObj = [
-    { id:1, name: 'Leonardo', weapon: 'Katana',color: 'blue' },
-    { id:2, name: 'Raphael', weapon: 'Sai', color: 'red' },
-    { id:3, name: 'Donatello', weapon: 'Jo', color: 'purple' },
-    { id:4, name: 'Michelangelo', weapon: 'Nunchuk', color: 'orange' },
-  ];
-
-  const totalCount = ref(0);
-  const turtleName = ref('');
-  const turtleWeapon = ref('');
   
-  const updateCounter = (name, weapon) => {
-    totalCount.value++;
-    turtleName.value = name;
-    turtleWeapon.value = weapon;
-  }
+  const photos = ref([]);
 
+  onMounted( () => {
+    api.getPhotos().then( response => {
+    console.log(response.data);
+    photos.value = response.data;
+  });
+  })
 
-  api.getPhotos().then( response => console.log(response.data));
+ 
 
 </script>
 
 <template>
   <div class="for">
-    <h1>V-For Example</h1>
-    <p>Total counter: {{ totalCount }}</p>
-    <p v-if="turtleName !== '' ">{{ turtleName }} uses {{ turtleWeapon }}</p>
+    <h1>API Example</h1>
     <section class="cards">
-      <TurtleCard v-for="turtle in tourtlesObj" :key="turtle.id" :info="turtle" @response="updateCounter"/>
+      <PhotoCard v-for="photo in photos" :key="photo.id" :info="photo"/>
     </section>
   </div>
 </template>
 
 <style>
-  .new{
+  .new {
     display: grid;
   }
-  li{
+  li {
     cursor: pointer;
   }
-  li:hover{
+  li:hover {
     color: hsla(160, 100%, 37%, 1);
   }
-  .cards{
+  .cards {
     display: flex;
     gap: 2rem;
+    max-width: 50vw;
+    flex-wrap: wrap;
   }
 </style>
