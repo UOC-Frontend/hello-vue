@@ -4,10 +4,10 @@
   import TurtleCard from '../components/TurtleCard.vue';
 
   const tourtlesObj = [
-    { id:1, name: 'Leonardo', weapon: 'Katana' },
-    { id:2, name: 'Raphael', weapon: 'Sai' },
-    { id:3, name: 'Donatello', weapon: 'Jo' },
-    { id:4, name: 'Michelangelo', weapon: 'Nunchuk' },
+    { id:1, name: 'Leonardo', weapon: 'Katana',color: 'blue' },
+    { id:2, name: 'Raphael', weapon: 'Sai', color: 'red' },
+    { id:3, name: 'Donatello', weapon: 'Jo', color: 'purple' },
+    { id:4, name: 'Michelangelo', weapon: 'Nunchuk', color: 'orange' },
   ];
 
   const totalCount = ref(0);
